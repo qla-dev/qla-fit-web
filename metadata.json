@@ -1,0 +1,6 @@
+{
+  "name": "qla.fit - Health & Fitness Dashboard",
+  "description": "Visualize your Apple Health metrics with precision widgets, workout analysis, and glanceable Apple Watch complications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

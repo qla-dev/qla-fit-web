@@ -1,0 +1,19 @@
+Options -Indexes
+DirectoryIndex dist/index.html
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    RewriteRule ^redeploy\.php$ - [L]
+    # Mount backend/public at /endpoints in the Apache virtual host.
+    RewriteRule ^endpoints(?:/|$) - [L]
+    RewriteRule ^dist(?:/|$) - [L]
+    RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}/dist/$1 -d
+    RewriteRule ^(.+)$ dist/$1 [L]
+    RewriteRule ^$ dist/index.html [L]
+    RewriteRule . dist/index.html [L]
+</IfModule>
