@@ -32,7 +32,7 @@ function AppContent() {
   };
 
   return (
-    <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 selection:bg-blue-600 selection:text-white ${
+    <div className={`min-h-screen flex flex-col overflow-x-clip font-sans transition-colors duration-300 selection:bg-blue-600 selection:text-white ${
       isLight ? 'bg-[#f8fafc] text-slate-900' : 'bg-[#08090d] text-neutral-100'
     }`}>
       {/* Navigation with Theme Switcher */}

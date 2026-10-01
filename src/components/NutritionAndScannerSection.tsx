@@ -344,7 +344,7 @@ export const NutritionAndScannerSection: React.FC = () => {
                     <div className="flex items-center justify-between gap-1 sm:gap-2 px-1 py-1">
                       
                       {/* Left: Eaten (Completely outside the circle on the left) */}
-                      <div className="flex flex-col items-center text-center min-w-[70px] pt-8 sm:pt-10">
+                      <div className="flex flex-col items-center text-center min-w-[56px] sm:min-w-[70px] pt-8 sm:pt-10">
                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-1 ${
                           isLight ? 'bg-cyan-50 border border-cyan-200 text-cyan-600' : 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-400'
                         }`}>
@@ -359,8 +359,8 @@ export const NutritionAndScannerSection: React.FC = () => {
                       </div>
 
                       {/* Center: Upright Dome Arch Gauge with Main Calories Inside */}
-                      <div className="relative w-[180px] sm:w-[220px] h-[115px] sm:h-[130px] flex items-center justify-center shrink-0">
-                        <svg className="w-[180px] sm:w-[220px] h-[115px] sm:h-[130px]" viewBox="0 0 220 125">
+                      <div className="relative w-[150px] sm:w-[220px] h-[96px] sm:h-[130px] flex items-center justify-center shrink-0">
+                        <svg className="w-[150px] sm:w-[220px] h-[96px] sm:h-[130px]" viewBox="0 0 220 125">
                           {/* Background Arc Track */}
                           <path
                             d="M 25 115 A 85 85 0 0 1 195 115"
@@ -406,7 +406,7 @@ export const NutritionAndScannerSection: React.FC = () => {
                       </div>
 
                       {/* Right: Burned (Completely outside the circle on the right) */}
-                      <div className="flex flex-col items-center text-center min-w-[70px] pt-8 sm:pt-10">
+                      <div className="flex flex-col items-center text-center min-w-[56px] sm:min-w-[70px] pt-8 sm:pt-10">
                         <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-1 ${
                           isLight ? 'bg-rose-50 border border-rose-200 text-rose-600' : 'bg-rose-500/10 border border-rose-500/20 text-rose-500'
                         }`}>

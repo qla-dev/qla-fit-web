@@ -15,9 +15,18 @@
   letter-spacing: -0.035em;
 }
 
+/* Decorative glows run wider than a phone screen. iOS Safari lets the page
+   pan sideways unless both html and body clip; `clip` rather than `hidden`
+   so neither becomes a scroll container and the sticky navbar keeps
+   working. */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-sans);
-  overflow-x: hidden;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 

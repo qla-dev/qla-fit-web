@@ -805,7 +805,7 @@ export const TrainingStoreSection: React.FC = () => {
                     className="p-4 rounded-2xl bg-[#141624] border border-neutral-800 hover:border-neutral-700 transition-all space-y-2.5"
                   >
                     <div className="flex items-start justify-between gap-3">
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <div className="flex items-center gap-2">
                           <span className="w-5 h-5 rounded-full bg-blue-600/20 text-blue-400 text-xs font-mono font-bold flex items-center justify-center">
                             {idx + 1}
@@ -820,7 +820,8 @@ export const TrainingStoreSection: React.FC = () => {
                       </div>
 
                       {/* AI Delta Badge */}
-                      <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-full font-semibold shrink-0">
+                      {/* Wraps on a phone instead of running past the card. */}
+                      <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded-xl font-semibold max-w-[55%] text-right">
                         {ex.adjustmentReason}
                       </span>
                     </div>
