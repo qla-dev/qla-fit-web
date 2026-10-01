@@ -42,7 +42,7 @@ const STORE_PROGRAMS: TrainingProgram[] = [
     id: 'glutes-for-days',
     title: 'Glutes for Days',
     tagline: 'Build the shelf. Keep the strength.',
-    coach: 'Sparky Strength Lab',
+    coach: 'qla.fit Strength Lab',
     coachRole: 'Biomechanics & Hypertrophy Specialist',
     rating: 4.9,
     ratingsCount: 2841,

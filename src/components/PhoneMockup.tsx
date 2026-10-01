@@ -939,7 +939,7 @@ export const PhoneMockup: React.FC<PhoneMockupProps> = ({
                           <div className="flex items-center justify-between">
                             <div>
                               <h3 className="text-xl font-bold text-white">Glutes for Days</h3>
-                              <p className="text-xs text-neutral-400">Sparky Strength Lab</p>
+                              <p className="text-xs text-neutral-400">qla.fit Strength Lab</p>
                             </div>
                             <span className="px-3 py-1.5 bg-blue-600 rounded-xl text-xs font-bold text-white">
                               Start Free
