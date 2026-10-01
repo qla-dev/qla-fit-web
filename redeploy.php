@@ -136,10 +136,19 @@ $currentPath = (string) (getenv('PATH') ?: '/usr/local/bin:/usr/bin:/bin');
 putenv('PATH='.$nodeBinDir.PATH_SEPARATOR.$currentPath);
 $npmCommand = escapeshellarg($npm);
 
+$pnpm = $npmCommand.' exec --yes --package=pnpm@10.33.4 -- pnpm';
+
+// A node_modules that pnpm believes is complete can still be missing native
+// binaries (rolldown, esbuild) after an interrupted install, and a plain
+// install then skips them. A failed build therefore gets one forced
+// reinstall, which relinks every package from the lockfile, and a retry.
 $commands = [
     ['label' => 'Pulling latest frontend code', 'command' => 'git pull --ff-only'],
-    ['label' => 'Installing web dependencies', 'command' => $npmCommand.' exec --yes --package=pnpm@10.33.4 -- pnpm install --frozen-lockfile'],
-    ['label' => 'Building qla.fit web', 'command' => $npmCommand.' run build'],
+    ['label' => 'Installing web dependencies', 'command' => $pnpm.' install --frozen-lockfile'],
+    ['label' => 'Building qla.fit web', 'command' => $npmCommand.' run build', 'repair' => [
+        'label' => 'Reinstalling web dependencies after a failed build',
+        'command' => $pnpm.' install --frozen-lockfile --force',
+    ]],
 ];
 
 $startedAt = time();
@@ -148,6 +157,15 @@ foreach ($commands as $step) {
     $write("\n=== {$step['label']} ===\n");
     $write("Command: {$step['command']}\n");
     $exitCode = $run($step['command'], $baseDir, $write);
+
+    if ($exitCode !== 0 && isset($step['repair'])) {
+        $write("\n=== {$step['repair']['label']} ===\n");
+        $write("Command: {$step['repair']['command']}\n");
+        if ($run($step['repair']['command'], $baseDir, $write) === 0) {
+            $write("\n=== {$step['label']} (retry) ===\n");
+            $exitCode = $run($step['command'], $baseDir, $write);
+        }
+    }
 
     if ($exitCode !== 0) {
         if (PHP_SAPI !== 'cli') {
